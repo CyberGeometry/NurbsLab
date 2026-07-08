@@ -27,10 +27,8 @@ jobs:
 
     - name: Build
       env:
-        config_flag: ${{ matrix.os == 'windows-latest' && '--config ' || '' }}${{ matrix.build_type }}
-      run: >
-        cmake --build ${{ github.workspace }}/build
-        ${{ env.config_flag }}
+        config_flag: ${{ matrix.os == 'windows-latest' && format('--config {0}', matrix.build_type) || '' }}
+      run: cmake --build ${{ github.workspace }}/build ${{ env.config_flag }}
 
     - name: Test
       env:
