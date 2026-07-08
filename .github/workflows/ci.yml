@@ -32,6 +32,6 @@ jobs:
 
     - name: Test
       env:
-        config_flag: ${{ matrix.os == 'windows-latest' && '--config ' || '' }}${{ matrix.build_type }}
+        config_flag: ${{ matrix.os == 'windows-latest' && format('-C {0}', matrix.build_type) || '' }}
       run: ctest --output-on-failure ${{ env.config_flag }}
       working-directory: ${{ github.workspace }}/build
