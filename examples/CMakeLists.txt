@@ -1,0 +1,2 @@
+add_executable(circle_approx circle_approx.cpp)
+target_link_libraries(circle_approx PRIVATE nurbslab)
